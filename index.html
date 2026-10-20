@@ -1,0 +1,133 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Wife & My Love Nema ❤️</title>
+<style>
+*{box-sizing:border-box}
+body{
+margin:0;min-height:100vh;display:flex;align-items:center;
+justify-content:center;overflow:hidden;text-align:center;
+font-family:Georgia,serif;color:#963653;
+background:linear-gradient(145deg,#fff0f5,#ffc9dd,#fff5f8)
+}
+.card{width:100%;max-width:430px;padding:25px}
+h1{font-size:30px}
+p{line-height:1.8;font-size:17px}
+.gift{
+position:relative;width:150px;height:120px;
+margin:65px auto 35px;cursor:pointer;
+animation:float 2s infinite ease-in-out
+}
+.box{
+position:absolute;bottom:0;width:150px;height:90px;
+background:#ff6498;border-radius:7px
+}
+.box:after{
+content:"";position:absolute;left:62px;
+width:26px;height:100%;background:#fff0c9
+}
+.lid{
+position:absolute;z-index:2;top:15px;left:-8px;
+width:166px;height:27px;border-radius:6px;
+background:#ed477f;transition:.8s
+}
+.lid:before{
+content:"🎀";position:absolute;font-size:40px;
+top:-35px;left:62px
+}
+.gift.open .lid{transform:translateY(-65px) rotate(-12deg)}
+button{
+border:0;border-radius:30px;padding:14px 22px;
+color:white;background:#e84d82;font-size:16px;
+cursor:pointer;margin:8px
+}
+#letter,#secret{display:none}
+#letter.show,#secret.show{display:block}
+#letter{animation:appear 1s ease}
+.heart{
+position:fixed;bottom:-40px;pointer-events:none;
+animation:rise 5s linear forwards
+}
+@keyframes float{50%{transform:translateY(-10px)}}
+@keyframes appear{
+from{opacity:0;transform:translateY(15px)}
+to{opacity:1;transform:translateY(0)}
+}
+@keyframes rise{
+to{transform:translateY(-110vh) rotate(25deg);opacity:0}
+}
+</style>
+</head>
+<body>
+<main class="card">
+<section id="intro">
+<div style="font-size:45px">💌</div>
+<h1>My Wife & My Love Nema ❤️</h1>
+<p>I have a little surprise for you...</p>
+<p>Made with all my love, just for you. 💗</p>
+</section>
+
+<div class="gift" id="gift" role="button" tabindex="0">
+<div class="lid"></div>
+<div class="box"></div>
+</div>
+<p id="hint">Tap the gift to open it 🎁</p>
+
+<section id="letter">
+<div style="font-size:45px">💖</div>
+<h1>Surprise, My Love!</h1>
+<p>If I could give you one thing in life,
+it would be the ability to see yourself
+through my eyes. Then you would know
+how special you are to me.</p>
+<p>You're my favorite person, today and always. ❤️</p>
+<button id="secretButton">One more thing... 💌</button>
+<p id="secret">No matter what life brings, I choose you.
+Today, tomorrow, and every day after. 💍
+<br><br>I love you, My Wife Nema. ❤️</p>
+</section>
+</main>
+
+<script>
+let opened=false;
+function hearts(){
+for(let i=0;i<24;i++){
+setTimeout(()=>{
+const h=document.createElement("span");
+h.className="heart";
+h.textContent=["❤️","💕","💗","💖"][Math.floor(Math.random()*4)];
+h.style.left=Math.random()*100+"vw";
+h.style.fontSize=(18+Math.random()*20)+"px";
+h.style.animationDuration=(3+Math.random()*3)+"s";
+document.body.appendChild(h);
+setTimeout(()=>h.remove(),6500);
+},i*100);
+}
+}
+function openGift(){
+if(opened)return;
+opened=true;
+document.getElementById("gift").classList.add("open");
+document.getElementById("hint").textContent="A little gift for you... 💗";
+setTimeout(()=>{
+document.getElementById("intro").style.display="none";
+document.getElementById("gift").style.display="none";
+document.getElementById("hint").style.display="none";
+document.getElementById("letter").classList.add("show");
+hearts();
+},850);
+}
+document.getElementById("gift").addEventListener("click",openGift);
+document.getElementById("gift").addEventListener("keydown",e=>{
+if(e.key==="Enter"||e.key===" "){e.preventDefault();openGift();}
+});
+document.getElementById("secretButton").addEventListener("click",()=>{
+document.getElementById("secret").classList.add("show");
+hearts();
+});
+</script>
+</body>
+</html>
